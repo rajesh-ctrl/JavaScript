@@ -25,18 +25,41 @@
       let todo1 = "Web APP";
       let todo2 = "Website";
       let todo3 = "Integrate PBI and Python";
+  
+      function addTodo(todoTitle) {
+        let element = document.createElement('div');
+        element.innerText = todoTitle;
+        document.body.appendChild(element);
+      }
 
-      let element = document.createElement('div');
-      element.innerText = todo3;
-      document.body.appendChild(element);
+      addTodo(todo1);
+      addTodo(todo2);
+      addTodo(todo3);
 
-      element = document.createElement('div');
-      element.innerText = todo2;
-      document.body.appendChild(element);
+      let todos = ['New todo app',"Project Tracker","PomoAPP","Day calculator"];
+      todo
+      
+      function greeting(name) {
+        console.log("hello " + name);
+      }
 
-      element = document.createElement('div');
-      element.innerText = todo1;
-      document.body.appendChild(element);
+      greeting(name="Rajesh");
+
+
+      function toUpper(text) {
+        utext = text.toUpperCase();
+        console.log(utext);
+      }
+      toUpper(text = "rajesh");
+
+
+      function converts(length) {
+        cm = length * 2.54;
+        console.log(cm);
+      }
+
+      converts(10);
+
 
       let buttonelement = document.createElement('button');
       buttonelement.innerText = "Created via JS";
@@ -44,7 +67,7 @@
       
     </script>
 
-    <button><script>alert(todo2);</script>click here</button>
+    <!-- <button><script>alert(todo2);</script>click here</button> -->
 
   </body>
 
