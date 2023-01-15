@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+    <title>JavaScript Learning</title>
+  </head>
+
+
+  <body>
+    <h1>To Do</h1>
+    
+    <input id="todo-item" type="text"/>
+    <input id="date-picker" type="date">    
+    <button onclick="addTodo()"> Add to ToDo </button>
+
+    <div id="todo-list"></div>
+
+    <header>
+    <input type="checkbox" />
+    <button onclick="additem('Apple')">Apple</button>
+    <button onclick="additem('Tomato')">Tomato</button>
+    <button onclick="additem('Eggs')">Eggs</button>
+    <button onclick="clearc()">Clear</button>
+    <div id="cart"></div>
+
+
+    
+    <input id="inchcm" type="text">
+    <button onclick="toinch()">Convert to inch </button>
+    <button onclick="tocm()">Convert to cm </button>
+    <div id="result"></div>
+    </header>
+
+
+    <script>
+
+      
+      function toinch(){
+        let num = document.getElementById("inchcm");
+        num = Number(num.value);
+        ans = num * 0.39
+        output(ans)
+      }
+
+      function tocm(){
+        let num = document.getElementById("inchcm");
+        num = Number(num.value);
+        ans = num * 2.54
+        output(ans)
+      }
+
+
+      function output(ans) {
+        let result = document.getElementById('result');
+          result.innerText = ans
+      }
+
+      
+
+      function additem(product) {
+        const stuff = document.createElement('div')
+        stuff.innerText = product
+        const cart = document.getElementById("cart")
+        cart.appendChild(stuff)
+      };
+
+      function clearc(){
+        cart.innerHTML=""
+      }
+
+
+
+      console.log('rajesh-ctrl');
+      const todos = [''];
+      render()
+
+      function addTodo() {
+        const textbox = document.getElementById("todo-item")
+        const item = textbox.value;
+
+        const datePicker = document.getElementById('date-picker');
+        const dueDate = datePicker.value;
+        todos.push(item);
+        render()
+        
+      }
+
+      function render() {
+        document.getElementById('todo-list').innerHTML="";
+
+        todos.forEach(function(i){        
+        const element = document.createElement('div');
+        element.innerText = i;
+        const todoList = document.getElementById("todo-list")
+        todoList.appendChild(element);
+        
+
+      });
+    };
+
+
+    </script>
+
+  </body>
+
+</html>
+

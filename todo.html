@@ -9,44 +9,47 @@
 
   <body>
     <h1>To Do</h1>
-    <button> Press me </button>
-    <button> Up </button>
-    <button> Down </button>
+    
+    <input id="todo-item" type="text"/>
+    <input id="date-picker" type="date">    
+    <button onclick="addTodo()"> Add to ToDo </button>
+
+    <div id="todo-list"></div>
+
+
 
     <script>
-      alert('hello, Please click ok to continue');
-    </script>
 
-    <script>
       console.log('rajesh-ctrl');
-    </script>
+      const todos = [''];
+      render()
 
-    <script>
-      let todos = ['New todo app',"Project Tracker","PomoAPP","Day calculator"];
-      todos.push("Gym App");
+      function addTodo() {
+        const textbox = document.getElementById("todo-item")
+        const item = textbox.value;
 
-      todos.forEach(function(i){
-        let element = document.createElement('div');
-        element.innerText = i;
-        document.body.appendChild(element);
-      });
-
-      lissts = ['New todo app',"Project Tracker","PomoAPP","Day calculator"];
-      s = []
-      i= 0
-      lissts.forEach(function(each){
-        s.push(each)
-        s.push(each)
+        const datePicker = document.getElementById('date-picker');
+        const dueDate = datePicker.value;
+        todos.push(item);
+        render()
         
-        }
-        )
-      console.log(s)
+      }
 
+      function render() {
+        document.getElementById('todo-list').innerHTML="";
+
+        todos.forEach(function(i){        
+        const element = document.createElement('div');
+        element.innerText = i;
+        const todoList = document.getElementById("todo-list")
+        todoList.appendChild(element);
+        
+
+      });
+    };
 
 
     </script>
-
-    <!-- <button><script>alert(todo2);</script>click here</button> -->
 
   </body>
 
