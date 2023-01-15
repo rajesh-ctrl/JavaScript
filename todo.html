@@ -21,32 +21,50 @@
     <script>
 
       console.log('rajesh-ctrl');
-      const todos = [''];
+      const todos = [{title:'Your Task',dueDate:'yyyy-mm-dd',id:"id1"}];
+      todos.pop()
       render()
+      
+
+      function deleteTodo(event) {
+        const deleteButton = event.target;
+        const idToDelete = deleteButton.id;
+        todos.pop()
+      }
 
       function addTodo() {
         const textbox = document.getElementById("todo-item")
-        const item = textbox.value;
+        const title = textbox.value;
 
         const datePicker = document.getElementById('date-picker');
         const dueDate = datePicker.value;
-        todos.push(item);
+
+        const id = new Date().getTime();
+
+        todos.push(todo = {title:title,dueDate:dueDate,id:id});
         render()
         
-      }
+      };
 
       function render() {
         document.getElementById('todo-list').innerHTML="";
 
-        todos.forEach(function(i){        
+        todos.forEach(function(todo){        
         const element = document.createElement('div');
-        element.innerText = i;
+        element.innerText = todo.title + " " + todo.dueDate;
+          
+        const deleteButton = document.createElement('button');
+        deleteButton.innerText = "Delete";
+        deleteButton.style = 'margin-left: 15px';
+        deleteButton.onclick = deleteTodo;
+        deleteButton.id = todo.id;
+        element.appendChild(deleteButton)
+
         const todoList = document.getElementById("todo-list")
         todoList.appendChild(element);
-        
 
       });
-    };
+      };
 
 
     </script>

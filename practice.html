@@ -16,26 +16,53 @@
 
     <div id="todo-list"></div>
 
-    <header>
-    <input type="checkbox" />
-    <button onclick="additem('Apple')">Apple</button>
-    <button onclick="additem('Tomato')">Tomato</button>
-    <button onclick="additem('Eggs')">Eggs</button>
-    <button onclick="clearc()">Clear</button>
-    <div id="cart"></div>
-
-
+    <div id="receipt"></div>
     
-    <input id="inchcm" type="text">
-    <button onclick="toinch()">Convert to inch </button>
-    <button onclick="tocm()">Convert to cm </button>
-    <div id="result"></div>
-    </header>
-
-
-    <script>
-
+    
+    <header>
+      <input type="checkbox" />
+      <button onclick="additem('Apple')">Apple</button>
+      <button onclick="additem('Tomato')">Tomato</button>
+      <button onclick="additem('Eggs')">Eggs</button>
+      <button onclick="clearc()">Clear</button>
+      <div id="cart"></div>
       
+      
+      
+      <input id="inchcm" type="text">
+      <button onclick="toinch()">Convert to inch </button>
+      <button onclick="tocm()">Convert to cm </button>
+      <div id="result"></div>
+    </header>
+    
+    
+    <script>
+      // <!-- Exercise 10 -->
+      const cartArray = [{name:'Apple',price:4,quantity:2}, 
+                          {name:'Orange',price:3, quantity:3}];
+      
+      prices = 0
+        cartArray.forEach(function cartTotal(cartArray) {
+        prices = prices + (cartArray.price * cartArray.quantity)        
+        console.log(prices)
+         receipt = document.getElementById("receipt")
+         lineitem = document.createElement('div')
+        lineitem.innerText = cartArray.name + " $" +cartArray.price+" * "+ cartArray.quantity+ " = $"+prices
+    
+        receipt.appendChild(lineitem)
+
+      });
+      total = document.createElement('div')
+      total.innerHTML = "Cart Total --> $" + prices
+      receipt.appendChild(total)
+      // 
+
+      // Ex 10, 2
+
+
+
+
+
       function toinch(){
         let num = document.getElementById("inchcm");
         num = Number(num.value);
