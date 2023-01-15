@@ -22,49 +22,28 @@
     </script>
 
     <script>
-      let todo1 = "Web APP";
-      let todo2 = "Website";
-      let todo3 = "Integrate PBI and Python";
-  
-      function addTodo(todoTitle) {
-        let element = document.createElement('div');
-        element.innerText = todoTitle;
-        document.body.appendChild(element);
-      }
-
-      addTodo(todo1);
-      addTodo(todo2);
-      addTodo(todo3);
-
       let todos = ['New todo app',"Project Tracker","PomoAPP","Day calculator"];
-      todo
-      
-      function greeting(name) {
-        console.log("hello " + name);
-      }
+      todos.push("Gym App");
 
-      greeting(name="Rajesh");
+      todos.forEach(function(i){
+        let element = document.createElement('div');
+        element.innerText = i;
+        document.body.appendChild(element);
+      });
 
-
-      function toUpper(text) {
-        utext = text.toUpperCase();
-        console.log(utext);
-      }
-      toUpper(text = "rajesh");
-
-
-      function converts(length) {
-        cm = length * 2.54;
-        console.log(cm);
-      }
-
-      converts(10);
+      lissts = ['New todo app',"Project Tracker","PomoAPP","Day calculator"];
+      s = []
+      i= 0
+      lissts.forEach(function(each){
+        s.push(each)
+        s.push(each)
+        
+        }
+        )
+      console.log(s)
 
 
-      let buttonelement = document.createElement('button');
-      buttonelement.innerText = "Created via JS";
-      document.body.appendChild(buttonelement);
-      
+
     </script>
 
     <!-- <button><script>alert(todo2);</script>click here</button> -->
