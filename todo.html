@@ -12,40 +12,70 @@
     
     <input id="todo-item" type="text"/>
     <input id="date-picker" type="date">    
-    <button onclick="addTodo()"> Add to ToDo </button>
+    <button onclick="addTodo()"> Add ToDo </button>
 
     <div id="todo-list"></div>
 
 
 
     <script>
+      const savedTodos = JSON.parse(localStorage.getItem('todos'));
+      //  Model section
+      let todos;
+      if (Array.isArray(savedTodos)) {                                                                                                                                                                                                                              
+        todos = savedTodos;
+        
+      } else {
+       todos =  [{title:'Your Task',dueDate:'yyyy-mm-dd',id:"id1"}];
 
-      console.log('rajesh-ctrl');
-      const todos = [{title:'Your Task',dueDate:'yyyy-mm-dd',id:"id1"}];
-      todos.pop()
+      }
+
+     
       render()
       
-
-      function deleteTodo(event) {
-        const deleteButton = event.target;
-        const idToDelete = deleteButton.id;
-        todos.pop()
+      // Creates a todo
+      function createTodo(title,dueDate) {
+        const id = ""+ new Date().getTime();
+        todos.push(todo = {title:title,dueDate:dueDate,id:id});
+        saveTodos();
+      }
+      // Deletes a todo
+      function removeTodo(idToDelete) {
+        todos = todos.filter(function (todo) {
+          if (todo.id === idToDelete) {
+            return false;            
+          } else {
+            return true;
+          }
+        }) ;
+        saveTodos();
+      }
+     
+      function saveTodos() {
+        localStorage.setItem("todos",JSON.stringify(todos));
       }
 
       function addTodo() {
         const textbox = document.getElementById("todo-item")
         const title = textbox.value;
-
+        
         const datePicker = document.getElementById('date-picker');
         const dueDate = datePicker.value;
-
-        const id = new Date().getTime();
-
-        todos.push(todo = {title:title,dueDate:dueDate,id:id});
-        render()
         
+        createTodo(title,dueDate);
+        render();        
       };
+      
+      function deleteTodo(event) {
+        const deleteButton = event.target;
+        const idToDelete = deleteButton.id;
 
+        removeTodo(idToDelete);
+        render();
+        saveTodos();
+      }
+
+      // View section/render section
       function render() {
         document.getElementById('todo-list').innerHTML="";
 
@@ -59,10 +89,10 @@
         deleteButton.onclick = deleteTodo;
         deleteButton.id = todo.id;
         element.appendChild(deleteButton)
-
+        
         const todoList = document.getElementById("todo-list")
         todoList.appendChild(element);
-
+        
       });
       };
 
